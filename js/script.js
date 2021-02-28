@@ -28,8 +28,8 @@ class Todo {
         li.insertAdjacentHTML('beforeend', `
             <span class="text-todo">${todo.value}</span>
             <div class="todo-buttons">
-              <button class="todo-remove"></button>
-              <button class="todo-complete"></button>
+            <button class="todo-remove"></button>
+            <button class="todo-complete"></button>
             </div>
         `);
         if (todo.completed) {
@@ -60,8 +60,8 @@ class Todo {
 
     deleteItem(target) {
         this.todoData.forEach((item, i) => {
-            if (item.value.trim() === target.closest('li').textContent.trim()) {
-                this.todoData.delete(i, 1);
+            if (item.key === target.closest('li').key) {
+                this.todoData.delete(i);
                 this.render();
             }
         });
@@ -69,7 +69,9 @@ class Todo {
 
     completedItem(target) {
         this.todoData.forEach(item => {
-            if (item.value.trim() === target.closest('li').textContent.trim()) {
+            console.log(item.key);
+            console.log(target.closest('li').key);
+            if (item.key === target.closest('li').key) {
                 item.completed = !item.completed;
                 this.render();
             }
