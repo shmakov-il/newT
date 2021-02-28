@@ -69,8 +69,6 @@ class Todo {
 
     completedItem(target) {
         this.todoData.forEach(item => {
-            console.log(item.key);
-            console.log(target.closest('li').key);
             if (item.key === target.closest('li').key) {
                 item.completed = !item.completed;
                 this.render();
